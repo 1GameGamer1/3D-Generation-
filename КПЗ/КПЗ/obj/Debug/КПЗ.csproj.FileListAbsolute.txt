@@ -1,0 +1,10 @@
+C:\Users\HP\source\repos\КПЗ\КПЗ\bin\Debug\КПЗ.exe.config
+C:\Users\HP\source\repos\КПЗ\КПЗ\bin\Debug\КПЗ.exe
+C:\Users\HP\source\repos\КПЗ\КПЗ\bin\Debug\КПЗ.pdb
+C:\Users\HP\source\repos\КПЗ\КПЗ\obj\Debug\КПЗ.csprojAssemblyReference.cache
+C:\Users\HP\source\repos\КПЗ\КПЗ\obj\Debug\КПЗ.Form1.resources
+C:\Users\HP\source\repos\КПЗ\КПЗ\obj\Debug\КПЗ.Properties.Resources.resources
+C:\Users\HP\source\repos\КПЗ\КПЗ\obj\Debug\КПЗ.csproj.GenerateResource.cache
+C:\Users\HP\source\repos\КПЗ\КПЗ\obj\Debug\КПЗ.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\КПЗ\КПЗ\obj\Debug\КПЗ.exe
+C:\Users\HP\source\repos\КПЗ\КПЗ\obj\Debug\КПЗ.pdb
