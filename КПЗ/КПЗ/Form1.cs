@@ -1179,6 +1179,7 @@ namespace КПЗ
                             points1[2] = new Point(YxL, YyL - m);
                             g.FillPolygon(myPen, points1);
 
+                            //Tree
                             for (int ii = 0; ii < 10; ii++)
                             {
                                 XxL = (int)Math.Round(YxL0 - ii * n / (s * 10) * Math.Cos(30)); XyL = (int)Math.Round(YyL0 + ii * n / (s * 10) * k);
@@ -1221,7 +1222,8 @@ namespace КПЗ
                                 g.FillPolygon(myPen11, points2);
                             if (cy < size - 1 && biomes[ApproxX, cy + 1] == Biome.Forest)
                                 g.FillPolygon(myPen11, points3);
-
+                            
+                            //Tree
                             for (int ii = 0; ii < 10; ii++)
                             {
                                 XxL = (int)Math.Round(YxL0 - ii * n / (s * 10) * Math.Cos(30)); XyL = (int)Math.Round(YyL0 + ii * n / (s * 10) * k);
@@ -1265,6 +1267,7 @@ namespace КПЗ
                             if (j < size - 1 && biomes[ApproxX, cy + 1] != Biome.Mountains)
                                 g.FillPolygon(myPen21, points3);
 
+                            //Tree
                             for (int ii = 0; ii < 10; ii++)
                             {
                                 XxL = (int)Math.Round(YxL0 - ii * n / (s * 10) * Math.Cos(30)); XyL = (int)Math.Round(YyL0 + ii * n / (s * 10) * k);
@@ -1633,7 +1636,8 @@ namespace КПЗ
                             YxL = (int)Math.Round(XxL + b / s * Math.Cos(30)); YyL = (int)Math.Round(XyL + b / s * k);
                             points1[2] = new Point(YxL, YyL-m);
                             g.FillPolygon(myPen, points1);
-
+                            
+                            //Tree
                             for (int ii = 0; ii < 10; ii++)
                             {
                                 XxL = (int)Math.Round(YxL0 - ii * n / (s * 10) * Math.Cos(30)); XyL = (int)Math.Round(YyL0 + ii * n / (s * 10) * k);
@@ -1677,8 +1681,8 @@ namespace КПЗ
                                 g.FillPolygon(myPen11, points2);
                             if (j < s - 1 && biomes[i, j+1] == Biome.Forest)
                                 g.FillPolygon(myPen11, points3);
-
-                            //Vertical
+                                
+                            //Tree
                             for (int ii = 0; ii < 10; ii++)
                             {
                                 XxL = (int)Math.Round(YxL0 - ii * n / (s * 10) * Math.Cos(30)); XyL = (int)Math.Round(YyL0 + ii * n / (s * 10) * k);
@@ -1724,7 +1728,7 @@ namespace КПЗ
                             if (j < s - 1 && biomes[i, j+1] != Biome.Mountains)
                                 g.FillPolygon(myPen21, points3);
 
-                            //Vertical
+                            //Tree
                             for (int ii = 0; ii < 10; ii++)
                             {
                                 XxL = (int)Math.Round(YxL0 - ii * n / (s * 10) * Math.Cos(30)); XyL = (int)Math.Round(YyL0 + ii * n / (s * 10) * k);
