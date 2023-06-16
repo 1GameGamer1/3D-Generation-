@@ -1462,91 +1462,72 @@ namespace КПЗ
         }
 
 
-        //???
+        //Mountain
         private void button21_Click(object sender, EventArgs e)
         {
             try
             {
-                Graphics g = pictureBox1.CreateGraphics();
+                Color col;
+                Random rand = new Random();
                 int n = Int32.Parse(textBox1.Text);//1200 (x)
                 int b = Int32.Parse(textBox2.Text);//1920 (y)
                 int m = Int32.Parse(textBox3.Text);
-                int width;
-                int height;
-                float[,] heightMap;
-                Pen myPen;
-                const float maxHeight = 255f;
-                width = 1000;
-                height = 1000;
+                Graphics g = pictureBox1.CreateGraphics();
+                int[,] YxL=new int[100,100], YyL=new int[100,100];
+                int XxL1, XyL1;
+                int[,] t = new int [100,100];
+                col = Color.FromArgb(0, 255, 0);
+                Pen myPen = new Pen(col);
+                Point[] points = new Point[4];
 
-                //GenerateHeightMap();
-                Random random = new Random();
-
-                heightMap = new float[width, height];
-
-                // Генерация случайной высоты для каждой точки на высотной карте
-                for (int x = 0; x < width; x++)
+                for (int i = 0; i < 100; i++)
                 {
-                    for (int y = 0; y < height; y++)
+                    for (int j = 0; j < 100; j++)
                     {
-                        heightMap[x, y] = (float)random.NextDouble() * maxHeight;
-                    }
-                }
-                int XxL1, XyL1, YxL, YyL;
-                //DrawMountain();
-                // Рисование горы на PictureBox
-                for (int i = 0; i < 1000; i++)
-                {
-                    for (int j = 0; j < 1000; j++)
-                    {
-                        XxL1 = (int)Math.Round(x - (j * n / 1000) * Math.Cos(30)); XyL1 = (int)Math.Round(y + (j * n / 1000) * k);
-                        YxL = (int)Math.Round(XxL1 + (i * b / 1000) * Math.Cos(30)); YyL = (int)Math.Round(XyL1 + (i * b / 1000) * k);
-                        float heightValue = heightMap[i, j];
-                        int grayValue = (int)(heightValue / maxHeight * 255);
-                        Color color = Color.FromArgb(grayValue, grayValue, grayValue);
-                        m = grayValue;
-                        myPen = new Pen(color);
-                        g.DrawEllipse(myPen,YxL, YyL-m,1,1);
-                    }
-                }
-                //Color col;
-                //Random rand = new Random();
-                //int n = Int32.Parse(textBox1.Text);//1200 (x)
-                //int b = Int32.Parse(textBox2.Text);//1920 (y)
-                //int m = Int32.Parse(textBox3.Text);
-                //Graphics g = pictureBox1.CreateGraphics();
-                //int YxL, YyL;
-                //int XxL1, XyL1;
-                //int t=0;
-                //Pen myPen = new Pen(Color.Blue);
+                        
+                        XxL1 = (int)Math.Round(x - (j * n / 100) * Math.Cos(30)); XyL1 = (int)Math.Round(y + (j * n / 100) * k);
+                        YxL[i,j] = (int)Math.Round(XxL1 + (i * b / 100) * Math.Cos(30)); YyL[i,j] = (int)Math.Round(XyL1 + (i * b / 100) * k);
+                        
+                        //Thread.Sleep(100);
+                        if (i > 5 && i < 95 && j > 5 && j < 95)
+                        {
+                            //if (i < 50 && j < 50)
+                            if(i<50 && j<50 || t[i-1, j]<=0 || t[i, j-1]<=0 || t[i-1, j-1]<=0)
+                                if (rand.Next(100) < 80)
+                                t[i, j] = (t[i - 1, j] + t[i - 1, j-1]+ t[i, j-1])/3 + 10;
+                                else t[i, j] = (t[i - 1, j] + t[i - 1, j - 1] + t[i, j - 1]) / 3 - 10;
+                            else if (rand.Next(100) < 80)
+                                t[i, j] = (t[i - 1, j] + t[i - 1, j - 1] + t[i, j - 1]) / 3 - 10;
+                            else t[i, j] = (t[i - 1, j] + t[i - 1, j - 1] + t[i, j - 1]) / 3 + 10;
 
-                //for (int j = 1; j <= 100; j++)
-                //{
-                //    t = 0;
-                //    for (int i = 0; i <= 100; i++)
-                //    {
-                //        col = Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255));
-                //        XxL1 = (int)Math.Round(x - (j * n / 100) * Math.Cos(30)); XyL1 = (int)Math.Round(y + (j * n / 100) * k);
-                //        YxL = (int)Math.Round(XxL1 + (i * b / 100) * Math.Cos(30)); YyL = (int)Math.Round(XyL1 + (i * b / 100) * k);
-                //        myPen = new Pen(col);
-                //        //Thread.Sleep(100);
-                //        if (i > 10 && i < 90 && j > 10 && j < 90)
-                //        {
-                //            if (i < 50)
-                //                t++;
-                //            else t--;
-                //            g.DrawEllipse(myPen, YxL, YyL - t-rand.Next(5), 1, 1);
-                //        }
-                //        else
-                //            g.DrawEllipse(myPen, YxL, YyL, 1, 1);
-                //    }
+                            //else if(i >= 50 && j < 50) 
+                            //    t[i, j] = t[i-1, j] - 1;
+                            if(t[i, j]>=0)
+                            col = Color.FromArgb(0 + t[i, j]/2, 255 - t[i, j]/2, 0);
+                            else col = Color.FromArgb(0, 255, 0);
+                            myPen = new Pen(col);
+                            g.DrawEllipse(myPen, YxL[i,j], YyL[i,j] - t[i,j], 1, 1);
 
-                //}
+                            if (i > 0 && j > 0)
+                            {
+                                points[0] = new Point(YxL[i, j], YyL[i, j] - t[i, j]);
+                                points[1] = new Point(YxL[i - 1, j], YyL[i - 1, j] - t[i - 1, j]);
+                                points[2] = new Point(YxL[i, j - 1], YyL[i, j - 1] - t[i, j - 1]);
+                                points[3] = new Point(YxL[i - 1, j - 1], YyL[i - 1, j - 1] - t[i - 1, j - 1]);
+                                g.DrawLines(myPen, points);
+                            }
+
+                        }
+                        else
+                            g.DrawEllipse(myPen, YxL[i, j], YyL[i, j], 1, 1);
+                    }
+
+                }
 
             }
             catch (Exception ex) //Проверка на наличие исключений
             {
-                MessageBox.Show("Error: " + ex.Message);//Вывод сообщения если исключения найдены
+                MessageBox.Show("Error: " + ex.Message + ex.StackTrace);//Вывод сообщения если исключения найдены
                 return; //Заканчиваем обработку
             }
         }
